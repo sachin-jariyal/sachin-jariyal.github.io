@@ -506,3 +506,82 @@
 .linkedin-link:hover {
   text-decoration: underline;
 }
+
+
+/* ...existing code... */
+
+/* Two-sided timeline with centered vertical line */
+.timeline.two-sided {
+  position: relative;
+  padding: 2rem 0;
+}
+.timeline.two-sided::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: var(--accent, #4f8cff);
+  border-radius: 2px;
+  z-index: 0;
+}
+.timeline.two-sided .t-item {
+  position: relative;
+  width: 46%;
+  margin-bottom: 2.5rem;
+  background: var(--card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  z-index: 1;
+}
+.timeline.two-sided .t-item.left {
+  left: 0;
+  margin-right: 54%;
+  text-align: right;
+}
+.timeline.two-sided .t-item.right {
+  left: 54%;
+  margin-left: 0;
+  text-align: left;
+}
+.timeline.two-sided .t-item::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  width: 16px;
+  height: 16px;
+  background: var(--accent, #4f8cff);
+  border-radius: 50%;
+  z-index: 2;
+  border: 3px solid #fff;
+}
+.timeline.two-sided .t-item.left::before {
+  right: -8px;
+}
+.timeline.two-sided .t-item.right::before {
+  left: -8px;
+}
+
+/* Responsive: stack items on small screens */
+@media (max-width: 900px) {
+  .timeline.two-sided::before {
+    left: 8px;
+    transform: none;
+  }
+  .timeline.two-sided .t-item,
+  .timeline.two-sided .t-item.left,
+  .timeline.two-sided .t-item.right {
+    width: 100%;
+    left: 0;
+    margin: 0 0 2rem 0;
+    text-align: left;
+  }
+  .timeline.two-sided .t-item::before {
+    left: -16px;
+    right: auto;
+  }
+}
+
+/* ...existing code... */
