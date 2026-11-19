@@ -1,0 +1,12 @@
+# GitHub Linguist: count React source as JavaScript
+*.jsx linguist-language=JavaScript
+*.js linguist-language=JavaScript
+*.mjs linguist-language=JavaScript
+*.css linguist-language=CSS
+index.html linguist-language=HTML
+
+# Keep IDE / build / lockfile noise out of language stats
+.vs/** linguist-vendored
+package-lock.json linguist-generated
+dist/** linguist-vendored
+coverage/** linguist-vendored
