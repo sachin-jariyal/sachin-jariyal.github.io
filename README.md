@@ -7,7 +7,6 @@ Premium React portfolio with an Apple-inspired light/dark experience.
 - React 19 + Vite
 - Framer Motion
 - Font Awesome icons
-- Custom Apple-style arrow cursors (black in light, white in dark)
 
 ## Develop
 
@@ -78,6 +77,6 @@ GitHub Pages via `.github/workflows/deploy.yml`.
 
 ```text
 src/                 React app
-public/images/       Favicon (SJ), cursors, avatar
+public/images/       Favicon (SJ), avatar
 .github/             CI, deploy, PR/issue templates
 ```

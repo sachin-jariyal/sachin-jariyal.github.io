@@ -1,11 +1,12 @@
 /* =========================================================
    Sachin Jariyal — Premium portfolio design system
-   Apple-inspired light / dark · matching arrow cursors
+   Apple-inspired light / dark
    ========================================================= */
 
 :root {
-  --cursor-default: url("/images/cursor-default.png") 3 1, auto;
-  --cursor-pointer: url("/images/cursor-pointer.png") 3 1, pointer;
+  /* Light theme: Windows-default look, forced black for visibility on white */
+  --cursor-default: url("/images/cursor-default.png") 0 0, auto;
+  --cursor-pointer: url("/images/cursor-pointer.png") 6 0, pointer;
 
   /* Apple.com light */
   --bg: #f5f5f7;
@@ -31,8 +32,9 @@
 
 /* Apple.com dark product pages */
 [data-theme="dark"] {
-  --cursor-default: url("/images/cursor-default-light.png") 3 1, auto;
-  --cursor-pointer: url("/images/cursor-pointer-light.png") 3 1, pointer;
+  /* Dark theme: native system cursors only */
+  --cursor-default: auto;
+  --cursor-pointer: pointer;
 
   --bg: #000000;
   --bg-elevated: #161617;
@@ -111,19 +113,6 @@ ol {
 .container {
   width: var(--container);
   margin-inline: auto;
-}
-
-/* Fine pointer: custom cursor. Touch: native. */
-@media (pointer: coarse) {
-  body,
-  a,
-  button,
-  .btn,
-  .menu-toggle,
-  .theme-btn,
-  .social-icon {
-    cursor: auto;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

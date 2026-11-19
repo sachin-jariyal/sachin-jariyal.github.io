@@ -35,7 +35,6 @@ Suggested GitHub labels (match commit prefix):
 - [ ] `npm run build` succeeds
 - [ ] Visual check: light mode
 - [ ] Visual check: dark mode
-- [ ] Custom cursor (black light / white dark)
 - [ ] Mobile navigation
 
 ## Notes
