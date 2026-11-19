@@ -63,7 +63,7 @@ Quick checklist when committing:
 - [ ] `ci` — workflows/Sonar
 - [ ] `chore` — cleanup
 
-PR template includes the same checkboxes + suggested GitHub labels (`.github/PULL_REQUEST_TEMPLATE.md`).
+PR form (`.github/PULL_REQUEST_TEMPLATE/pr_form.yml`) uses interactive multi-select checkboxes for change type, labels, and test plan.
 
 Label definitions: `.github/labels.yml`
 
