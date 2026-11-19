@@ -1,0 +1,33 @@
+# Apply with: gh label create ... or GitHub UI
+# Used for PR/issue bifurcation aligned with Conventional Commits
+
+- name: feat
+  color: "0E8A16"
+  description: New feature
+- name: fix
+  color: "D73A4A"
+  description: Bug fix
+- name: docs
+  color: "0075CA"
+  description: Documentation
+- name: style
+  color: "F9D0C4"
+  description: Visual / formatting polish
+- name: refactor
+  color: "C5DEF5"
+  description: Refactor without behavior change
+- name: perf
+  color: "A2EEEF"
+  description: Performance
+- name: test
+  color: "BFDADC"
+  description: Tests
+- name: build
+  color: "BFD4F2"
+  description: Build / dependencies
+- name: ci
+  color: "E4E669"
+  description: CI/CD
+- name: chore
+  color: "FEF2C0"
+  description: Maintenance / cleanup
