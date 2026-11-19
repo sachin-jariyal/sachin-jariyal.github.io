@@ -1,9 +1,14 @@
-# GitHub Linguist: count React source as JavaScript
+# GitHub Linguist overrides
+# JSX is often misclassified as HTML because of markup-like tags.
 *.jsx linguist-language=JavaScript
+*.jsx linguist-detectable=true
 *.js linguist-language=JavaScript
 *.mjs linguist-language=JavaScript
 *.css linguist-language=CSS
-index.html linguist-language=HTML
+
+# Vite entry shell only — do not skew the language bar toward HTML
+index.html -linguist-detectable
+*.svg -linguist-detectable
 
 # Keep IDE / build / lockfile noise out of language stats
 .vs/** linguist-vendored
