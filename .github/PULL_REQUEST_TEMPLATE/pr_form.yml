@@ -1,0 +1,77 @@
+name: Pull request
+description: Structured PR with change-type checkboxes and test plan
+title: ""
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Select every change type that applies, then summarize what landed and how you verified it.
+
+  - type: checkboxes
+    id: change-type
+    attributes:
+      label: Change type
+      description: Multi-select — check all that apply (maps to Conventional Commit prefixes / labels).
+      options:
+        - label: "`feat` — new feature"
+        - label: "`fix` — bug fix"
+        - label: "`docs` — documentation only"
+        - label: "`style` — formatting / visual polish (no logic change)"
+        - label: "`refactor` — code change without feature/bug behavior change"
+        - label: "`perf` — performance improvement"
+        - label: "`test` — adding or updating tests"
+        - label: "`build` — build system / dependencies"
+        - label: "`ci` — CI/CD workflow changes"
+        - label: "`chore` — maintenance / cleanup"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: labels
+    attributes:
+      label: Labels to apply
+      description: Suggested GitHub labels (match the commit prefix). Multi-select.
+      options:
+        - label: feat
+        - label: fix
+        - label: docs
+        - label: style
+        - label: refactor
+        - label: perf
+        - label: test
+        - label: build
+        - label: ci
+        - label: chore
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What changed and why.
+      placeholder: Short context for reviewers…
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: test-plan
+    attributes:
+      label: Test plan
+      description: Multi-select — check everything you ran or verified.
+      options:
+        - label: "`npm run lint` passes"
+        - label: "`npm test` passes"
+        - label: "`npm run build` succeeds"
+        - label: "Visual check — light mode"
+        - label: "Visual check — dark mode"
+        - label: "Mobile navigation"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Screenshots, risks, follow-ups (optional).
+      placeholder: Optional…
+    validations:
+      required: false
