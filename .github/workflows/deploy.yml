@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master, dev]
+    # github-pages environment protection typically allows only main/master
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
