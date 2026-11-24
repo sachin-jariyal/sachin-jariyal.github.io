@@ -168,14 +168,18 @@ ol {
 }
 
 .menu-toggle {
-  width: 34px;
-  height: 34px;
+  position: relative;
+  z-index: 140;
+  width: 40px;
+  height: 40px;
   border: 1px solid var(--border);
   border-radius: 980px;
-  background: color-mix(in srgb, var(--bg-elevated) 80%, transparent);
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
   color: var(--text);
   display: grid;
-  place-items: center;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
   padding: 0;
   font-size: 0.9rem;
   transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
@@ -189,18 +193,32 @@ ol {
 
 .menu-toggle span {
   display: block;
-  width: 14px;
-  height: 1.5px;
+  width: 16px;
+  height: 1.75px;
   background: var(--text);
-  margin: 3px auto;
-  transition: transform 0.25s ease;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(5.75px) rotate(45deg);
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-5.75px) rotate(-45deg);
 }
 
 .nav-actions {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.55rem;
   position: relative;
+  z-index: 140;
   overflow: visible;
 }
 
@@ -208,7 +226,7 @@ ol {
   display: none;
 }
 
-/* Fancy hanging chain + drop pendant — far right, away from menu */
+/* Red ribbon theme toggle — keep clear of the hamburger */
 .theme-chain {
   position: absolute;
   top: -1px;
@@ -222,9 +240,10 @@ ol {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  z-index: 130;
+  z-index: 120;
   transform-origin: top center;
   line-height: 1;
+  pointer-events: auto;
 }
 
 .theme-ribbon-slot {
@@ -285,19 +304,39 @@ ol {
 
 @media (max-width: 860px) {
   .theme-chain {
-    right: clamp(3.2rem, 12vw, 4.5rem);
+    /* Sit left of the hamburger so clicks aren't blocked */
+    right: 3.75rem;
+  }
+
+  /* Native mobile scroll — no forced full-viewport snap bounce */
+  .section,
+  .hero,
+  .contact-section.section {
+    height: auto;
+    max-height: none;
+    min-height: auto;
+  }
+
+  .contact-panel {
+    min-height: auto;
+  }
+
+  .contact-inner {
+    padding: clamp(2.5rem, 8vw, 4rem) 0 2rem;
   }
 }
 
 .mobile-menu {
   position: absolute;
   inset: var(--nav-h) 0 auto;
+  z-index: 150;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   padding: 1rem 1.5rem 1.5rem;
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -310,11 +349,19 @@ ol {
 
 @media (max-width: 860px) {
   .desktop-only {
-    display: none;
+    display: none !important;
   }
 
   .mobile-only {
     display: flex;
+  }
+
+  /* Keep hamburger lines stacked (don't let .mobile-only flex override) */
+  .menu-toggle.mobile-only {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 4px;
   }
 }
 

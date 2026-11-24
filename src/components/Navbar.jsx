@@ -43,12 +43,13 @@ export default function Navbar() {
         <div className="nav-actions">
           <button
             type="button"
-            className="menu-toggle mobile-only"
+            className={`menu-toggle mobile-only ${open ? "is-open" : ""}`}
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
+            <span />
             <span />
             <span />
           </button>
