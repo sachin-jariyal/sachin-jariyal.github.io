@@ -7,7 +7,7 @@ import {
 } from "../utils/smoothScroll";
 
 const WHEEL_THRESHOLD = 36;
-const TOUCH_THRESHOLD = 48;
+const MOBILE_MQ = "(max-width: 860px), (hover: none) and (pointer: coarse)";
 
 function getSections(ids) {
   return ids
@@ -24,17 +24,28 @@ function currentSectionIndex(sections) {
   return index;
 }
 
+function isMobileLike() {
+  return window.matchMedia(MOBILE_MQ).matches;
+}
+
 /**
- * One wheel / swipe / key → next or previous section.
- * Page scrolls as a whole — no per-section scrollbars.
+ * Desktop: one wheel/key → next or previous section.
+ * Mobile/touch: native scroll only (avoids bounce from hijacked swipes).
  */
 export function useSectionScroll(sectionIds) {
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
 
-    let touchStartY = 0;
     let wheelAcc = 0;
     let wheelLockUntil = 0;
+    let enabled = !isMobileLike();
+
+    const media = window.matchMedia(MOBILE_MQ);
+    const syncEnabled = () => {
+      enabled = !media.matches;
+      wheelAcc = 0;
+    };
+    media.addEventListener?.("change", syncEnabled);
 
     const go = (index) => {
       const sections = getSections(sectionIds);
@@ -50,7 +61,7 @@ export function useSectionScroll(sectionIds) {
     };
 
     const tryStep = (direction) => {
-      if (prefersReducedMotion()) return false;
+      if (!enabled || prefersReducedMotion()) return false;
       if (isSmoothScrolling() || performance.now() < wheelLockUntil) {
         return true;
       }
@@ -61,18 +72,18 @@ export function useSectionScroll(sectionIds) {
       const index = currentSectionIndex(sections);
 
       if (direction > 0) {
-        if (index >= sections.length - 1) return true; // lock last (contact+footer)
+        if (index >= sections.length - 1) return true;
         go(index + 1);
         return true;
       }
 
-      if (index <= 0) return true; // lock first
+      if (index <= 0) return true;
       go(index - 1);
       return true;
     };
 
     const onWheel = (event) => {
-      if (prefersReducedMotion()) return;
+      if (!enabled || prefersReducedMotion()) return;
 
       if (isSmoothScrolling() || performance.now() < wheelLockUntil) {
         event.preventDefault();
@@ -93,6 +104,7 @@ export function useSectionScroll(sectionIds) {
     };
 
     const onKeyDown = (event) => {
+      if (!enabled) return;
       const keysDown = ["ArrowDown", "PageDown", " "];
       const keysUp = ["ArrowUp", "PageUp"];
       if (keysDown.includes(event.key)) {
@@ -102,27 +114,13 @@ export function useSectionScroll(sectionIds) {
       }
     };
 
-    const onTouchStart = (event) => {
-      touchStartY = event.touches[0]?.clientY ?? 0;
-    };
-
-    const onTouchEnd = (event) => {
-      const endY = event.changedTouches[0]?.clientY ?? touchStartY;
-      const delta = touchStartY - endY;
-      if (Math.abs(delta) < TOUCH_THRESHOLD) return;
-      tryStep(delta > 0 ? 1 : -1);
-    };
-
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
 
     return () => {
+      media.removeEventListener?.("change", syncEnabled);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
     };
   }, [sectionIds]);
 }
