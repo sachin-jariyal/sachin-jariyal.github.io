@@ -17,7 +17,7 @@ describe("useTheme", () => {
     });
 
     expect(result.current.theme).toBe("dark");
-    expect(localStorage.getItem("pref-theme")).toBe("dark");
+    expect(localStorage.getItem("pref-theme-v2")).toBe("dark");
     expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
   });
 });

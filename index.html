@@ -1,8 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("pref-theme-v2");
+          document.documentElement.setAttribute(
+            "data-theme",
+            t === "dark" ? "dark" : "light"
+          );
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="Sachin Jariyal — Fullstack Engineer with 12+ years building distributed, cloud-native systems using Java, Node.js, React, and AWS."
@@ -12,7 +25,7 @@
       name="keywords"
       content="Sachin Jariyal, Fullstack Engineer, Apar Technologies, Java, Microservices, Node.js, React, AWS, Kafka, TypeScript, Distributed Systems"
     />
-    <meta name="theme-color" content="#f5f5f7" />
+    <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content="Sachin Jariyal — Portfolio" />
     <meta
       property="og:description"

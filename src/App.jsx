@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -5,9 +6,17 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import { navLinks } from "./data/content";
+import { useSectionScroll } from "./hooks/useSectionScroll";
 
 export default function App() {
+  const sectionIds = useMemo(
+    () => navLinks.map((link) => link.href.slice(1)),
+    []
+  );
+  useSectionScroll(sectionIds);
+
   return (
     <div className="app-shell">
       <Navbar />
@@ -19,7 +28,7 @@ export default function App() {
         <Education />
         <Contact />
       </main>
-      <Footer />
+      <ScrollToTop />
     </div>
   );
 }

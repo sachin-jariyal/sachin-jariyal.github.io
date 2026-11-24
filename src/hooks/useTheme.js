@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 
-const THEME_KEY = "pref-theme";
+/** Bumped key so white/light is the fresh default for returning visitors. */
+const THEME_KEY = "pref-theme-v2";
 
 function getInitialTheme() {
   if (typeof window === "undefined") return "light";
@@ -17,7 +18,7 @@ export function useTheme() {
     localStorage.setItem(THEME_KEY, theme);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) {
-      meta.setAttribute("content", theme === "dark" ? "#000000" : "#f5f5f7");
+      meta.setAttribute("content", theme === "dark" ? "#000000" : "#ffffff");
     }
   }, [theme]);
 

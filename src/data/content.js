@@ -21,7 +21,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/sachin-jariyal/",
   github: "https://github.com/sachin-jariyal",
   avatar: "/images/avatar-cutout.png?v=20261120",
-  courses: [{ name: "Generative AI", source: "LinkedIn" }],
+  courses: [],
   recommendation: {
     author: "J S.",
     initials: "JS",
