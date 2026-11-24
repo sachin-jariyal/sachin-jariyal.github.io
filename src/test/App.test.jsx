@@ -57,9 +57,7 @@ describe("App", () => {
     render(<App />);
     expect(screen.getAllByLabelText(/linkedin/i).length).toBeGreaterThan(0);
     expect(screen.getAllByLabelText(/github/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByLabelText(/gmail/i).length).toBeGreaterThan(0);
-    expect(
-      screen.getAllByLabelText(/resume on google drive/i).length
-    ).toBeGreaterThan(0);
+    expect(screen.queryByLabelText(/gmail/i)).not.toBeInTheDocument();
+    expect(screen.getAllByLabelText(/^resume$/i).length).toBeGreaterThan(0);
   });
 });

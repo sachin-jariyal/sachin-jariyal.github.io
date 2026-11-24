@@ -1,5 +1,28 @@
 import Reveal from "./Reveal";
 import { skillGroups, profile } from "../data/content";
+import { getSkillIcon, simpleIconUrl } from "../data/skillIcons";
+
+function SkillTag({ name }) {
+  const meta = getSkillIcon(name);
+
+  return (
+    <li className="skill-tag" style={{ "--skill-color": meta.color }}>
+      {meta.fa ? (
+        <i className={`skill-tag-icon ${meta.fa}`} aria-hidden="true" />
+      ) : (
+        <img
+          className="skill-tag-icon-img"
+          src={simpleIconUrl(meta.si, meta.color)}
+          alt=""
+          width={14}
+          height={14}
+          loading="lazy"
+        />
+      )}
+      <span>{name}</span>
+    </li>
+  );
+}
 
 export default function Skills() {
   return (
@@ -23,7 +46,7 @@ export default function Skills() {
               </div>
               <ul className="skill-tags">
                 {group.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <SkillTag key={item} name={item} />
                 ))}
               </ul>
             </Reveal>
@@ -35,7 +58,7 @@ export default function Skills() {
             <h3>Continued learning</h3>
             <ul className="skill-tags">
               {profile.courses.map((c) => (
-                <li key={c.name}>{c.name}</li>
+                <SkillTag key={c.name} name={c.name} />
               ))}
             </ul>
           </Reveal>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navLinks, profile } from "../data/content";
+import { navLinks } from "../data/content";
 import { useTheme } from "../hooks/useTheme";
+import { handleHashClick } from "../utils/smoothScroll";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -24,17 +25,17 @@ export default function Navbar() {
 
   const close = () => setOpen(false);
 
+  const onNavClick = (event) => {
+    handleHashClick(event);
+    close();
+  };
+
   return (
     <header className={`nav-bar ${scrolled ? "is-scrolled" : ""}`} role="banner">
       <div className="container nav-inner">
-        <a href="#home" className="brand" onClick={close}>
-          {profile.brand}
-          <span className="brand-accent">{profile.brandAccent}</span>
-        </a>
-
         <nav className="nav-links desktop-only" aria-label="Primary">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
+            <a key={link.href} href={link.href} onClick={onNavClick}>
               {link.label}
             </a>
           ))}
@@ -45,7 +46,7 @@ export default function Navbar() {
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             {theme === "dark" ? (
-              <i className="fa-regular fa-sun" aria-hidden="true" />
+              <i className="fa-solid fa-sun" aria-hidden="true" />
             ) : (
               <i className="fa-regular fa-moon" aria-hidden="true" />
             )}
@@ -60,7 +61,7 @@ export default function Navbar() {
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             {theme === "dark" ? (
-              <i className="fa-regular fa-sun" aria-hidden="true" />
+              <i className="fa-solid fa-sun" aria-hidden="true" />
             ) : (
               <i className="fa-regular fa-moon" aria-hidden="true" />
             )}
@@ -91,7 +92,7 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
           >
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={close}>
+              <a key={link.href} href={link.href} onClick={onNavClick}>
                 {link.label}
               </a>
             ))}
