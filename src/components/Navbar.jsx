@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "../data/content";
-import { useTheme } from "../hooks/useTheme";
 import { handleHashClick } from "../utils/smoothScroll";
+import ThemeChain from "./ThemeChain";
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -39,36 +38,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <button
-            type="button"
-            className="theme-btn"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          >
-            {theme === "dark" ? (
-              <i className="fa-solid fa-sun" aria-hidden="true" />
-            ) : (
-              <i className="fa-regular fa-moon" aria-hidden="true" />
-            )}
-          </button>
         </nav>
 
-        <div className="nav-actions mobile-only">
+        <div className="nav-actions">
           <button
             type="button"
-            className="theme-btn"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          >
-            {theme === "dark" ? (
-              <i className="fa-solid fa-sun" aria-hidden="true" />
-            ) : (
-              <i className="fa-regular fa-moon" aria-hidden="true" />
-            )}
-          </button>
-          <button
-            type="button"
-            className="menu-toggle"
+            className="menu-toggle mobile-only"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -79,6 +54,9 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Far-right hanging pendant — kept away from the menu */}
+      <ThemeChain />
 
       <AnimatePresence>
         {open && (
