@@ -303,9 +303,8 @@ ol {
 }
 
 @media (max-width: 860px) {
-  .theme-chain {
-    /* Sit left of the hamburger so clicks aren't blocked */
-    right: 3.75rem;
+  .nav-inner {
+    justify-content: flex-start;
   }
 
   /* Native mobile scroll — no forced full-viewport snap bounce */
