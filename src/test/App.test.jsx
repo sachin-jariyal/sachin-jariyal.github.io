@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 
@@ -44,13 +44,17 @@ describe("App", () => {
     const user = userEvent.setup();
     render(<App />);
 
-    const toggle = screen.getAllByLabelText(/switch to dark mode/i)[0];
+    const toggle = screen.getByLabelText(/pull ribbon to switch to dark/i);
     await user.click(toggle);
-    expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
+    await waitFor(() => {
+      expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
+    });
 
-    const lightToggle = screen.getAllByLabelText(/switch to light mode/i)[0];
+    const lightToggle = screen.getByLabelText(/pull ribbon to switch to light/i);
     await user.click(lightToggle);
-    expect(document.documentElement.getAttribute("data-theme")).toBe("light");
+    await waitFor(() => {
+      expect(document.documentElement.getAttribute("data-theme")).toBe("light");
+    });
   });
 
   it("exposes social destinations", () => {

@@ -27,33 +27,31 @@ const links = [
 export default function SocialButtons({ onDark = false }) {
   return (
     <div className={`social-icons ${onDark ? "social-icons-on-dark" : ""}`}>
-      {links.map((link) =>
-        link.type === "button" ? (
+      {links.map((link) => {
+        const isButton = link.type === "button";
+        const className = isButton
+          ? `social-resume-btn social-resume-btn-${link.brand} social-magnetic`
+          : `social-icon social-icon-${link.brand} social-magnetic`;
+
+        return (
           <a
             key={link.brand}
-            className={`social-resume-btn social-resume-btn-${link.brand}`}
+            className={className}
             href={link.href}
             aria-label={link.label}
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
           >
-            {link.label}
+            <span className="social-magnetic-glow" aria-hidden="true" />
+            {isButton ? (
+              link.label
+            ) : (
+              <i className={link.icon} aria-hidden="true" />
+            )}
           </a>
-        ) : (
-          <a
-            key={link.brand}
-            className={`social-icon social-icon-${link.brand}`}
-            href={link.href}
-            aria-label={link.label}
-            {...(link.external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-          >
-            <i className={link.icon} aria-hidden="true" />
-          </a>
-        )
-      )}
+        );
+      })}
     </div>
   );
 }
