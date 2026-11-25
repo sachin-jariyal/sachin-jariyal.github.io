@@ -6,10 +6,14 @@ export default function Footer() {
   return (
     <footer className="site-footer" role="contentinfo">
       <div className="container foot-inner">
-        <span>
-          © {year} {profile.name}
-        </span>
-        <span>Crafted with React</span>
+        <p className="foot-copy">
+          Copyright &copy; {year} {profile.name}. All rights reserved.
+        </p>
+        <p className="foot-legal">
+          {profile.name} is the sole owner of this website and its contents.
+          No part of this site may be copied, reproduced, or distributed
+          without prior written permission.
+        </p>
       </div>
     </footer>
   );
