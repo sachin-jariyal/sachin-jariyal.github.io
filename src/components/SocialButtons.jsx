@@ -1,4 +1,5 @@
 import { profile } from "../data/content";
+import { openSocialProfile } from "../utils/openSocialProfile";
 
 const links = [
   {
@@ -6,14 +7,14 @@ const links = [
     label: "LinkedIn",
     brand: "linkedin",
     icon: "fa-brands fa-linkedin-in",
-    external: true,
+    deepLink: true,
   },
   {
     href: profile.github,
     label: "GitHub",
     brand: "github",
     icon: "fa-brands fa-github",
-    external: true,
+    deepLink: true,
   },
   {
     href: profile.resumeUrl,
@@ -39,9 +40,13 @@ export default function SocialButtons({ onDark = false }) {
             className={className}
             href={link.href}
             aria-label={link.label}
-            {...(link.external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
+            {...(link.deepLink
+              ? {
+                  onClick: (e) => openSocialProfile(link.brand, link.href, e),
+                }
+              : link.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
           >
             <span className="social-magnetic-glow" aria-hidden="true" />
             {isButton ? (
