@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import { navLinks } from "./data/content";
 import { useSectionScroll } from "./hooks/useSectionScroll";
+import { useCopyGuard } from "./hooks/useCopyGuard";
 
 export default function App() {
   const sectionIds = useMemo(
@@ -16,6 +17,7 @@ export default function App() {
     []
   );
   useSectionScroll(sectionIds);
+  useCopyGuard();
 
   return (
     <div className="app-shell">
