@@ -93,6 +93,17 @@ textarea {
 img {
   max-width: 100%;
   display: block;
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: auto;
+}
+
+picture,
+svg,
+canvas,
+video {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 a {
