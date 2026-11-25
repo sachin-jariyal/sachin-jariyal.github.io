@@ -12,9 +12,9 @@ export const profile = {
   tagline:
     "Fullstack · JavaScript · TypeScript · MERN · MEAN · Microservices · Distributed Systems",
   summary:
-    "Fullstack Engineer with 12+ years of experience building distributed, scalable systems using Java, Node.js, and React. Passionate about microservices, API design, and mentoring engineering teams to deliver reliable software.",
+    "Fullstack Engineer with 12+ years of experience building distributed, scalable systems using Java, Node.js, and React. Passionate about microservices, API design, and mentoring engineering teams to deliver reliable software. Comfortable owning end-to-end delivery across frontend, backend APIs, data stores, and cloud infrastructure.",
   aboutExtra:
-    "Available in 30 days. Focused on scaling distributed, cloud-native systems.",
+    "Available in 30 days. Currently focused on scaling distributed, cloud-native systems with resilient messaging, clean API boundaries, and strong observability in production.",
   email: "sachinjariyal9@gmail.com",
   resumeUrl:
     "https://drive.google.com/file/d/1uClNYtXqSLY3AEeLYZfe_ENkg26ret06/view?usp=drive_link",

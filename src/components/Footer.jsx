@@ -6,14 +6,32 @@ export default function Footer() {
   return (
     <footer className="site-footer" role="contentinfo">
       <div className="container foot-inner">
-        <p className="foot-copy">
-          Copyright &copy; {year} {profile.name}. All rights reserved.
-        </p>
-        <p className="foot-legal">
-          {profile.name} is the sole owner of this website and its contents.
-          No part of this site may be copied, reproduced, or distributed
-          without prior written permission.
-        </p>
+        <nav className="foot-links" aria-label="Footer">
+          <a href="#home">Home</a>
+          <span className="foot-sep" aria-hidden="true">
+            /
+          </span>
+          <a href="#about">About</a>
+          <span className="foot-sep" aria-hidden="true">
+            /
+          </span>
+          <a href="#experience">Experience</a>
+          <span className="foot-sep" aria-hidden="true">
+            /
+          </span>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div className="foot-center">
+          <p className="foot-copy">
+            Copyright &copy; {year}. All rights reserved.
+          </p>
+          <p className="foot-owner">
+            Sole owner of this website and its contents.
+          </p>
+        </div>
+
+        <p className="foot-signature">{profile.name}</p>
       </div>
     </footer>
   );
