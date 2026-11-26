@@ -23,10 +23,18 @@ export default function Hero() {
           <motion.p
             className="hero-role"
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              reduceMotion
+                ? { opacity: 1 }
+                : { opacity: 1, y: 0, transitionEnd: { transform: "none" } }
+            }
             transition={{ duration: 0.6, delay: 0.22 }}
           >
-            {profile.title} · {profile.company}
+            <span className="hero-role-title">{profile.title}</span>
+            <span className="hero-role-sep" aria-hidden="true">
+              ·
+            </span>
+            <span className="hero-company">{profile.company}</span>
           </motion.p>
 
           <motion.div

@@ -2,7 +2,8 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const variants = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
+  /* Clear transform after settle — leftover translateY(0) blurs text on Windows GPUs */
+  visible: { opacity: 1, y: 0, transitionEnd: { y: 0, transform: "none" } },
 };
 
 export default function Reveal({

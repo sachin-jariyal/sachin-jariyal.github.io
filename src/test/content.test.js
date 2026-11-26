@@ -27,7 +27,15 @@ describe("portfolio content", () => {
     const ai = skillGroups.find((g) => /AI/i.test(g.title));
     expect(ai).toBeTruthy();
     expect(ai.items).toEqual(
-      expect.arrayContaining(["GitHub Copilot", "Cursor AI"])
+      expect.arrayContaining(["GitHub Copilot", "Cursor AI", "Generative AI"])
+    );
+  });
+
+  it("surfaces LinkedIn-aligned impact highlights", () => {
+    expect(profile.availability).toMatch(/25|30/);
+    expect(profile.aboutHighlights?.length).toBeGreaterThanOrEqual(4);
+    expect(profile.languages).toEqual(
+      expect.arrayContaining(["English", "Hindi", "Punjabi"])
     );
   });
 

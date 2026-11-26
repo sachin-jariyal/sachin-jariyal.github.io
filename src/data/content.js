@@ -9,12 +9,28 @@ export const profile = {
   title: "Fullstack Engineer",
   company: "Apar Technologies",
   location: "Remote",
+  headline:
+    "Solution Architect · Microservices · Distributed Systems · Cloud · Systems Design",
   tagline:
     "Fullstack · JavaScript · TypeScript · MERN · MEAN · Microservices · Distributed Systems",
   summary:
-    "Fullstack Engineer with 12+ years of experience building distributed, scalable systems using Java, Node.js, and React. Passionate about microservices, API design, and mentoring engineering teams to deliver reliable software. Comfortable owning end-to-end delivery across frontend, backend APIs, data stores, and cloud infrastructure.",
+    "Fullstack engineer and systems thinker with 12+ years designing distributed, cloud-native platforms that stay correct under load. I treat production as the product: clear service boundaries, measurable SLOs, and code that other engineers can evolve without fear.",
+  aboutBody: [
+    "I design and ship event-driven microservices handling 1M+ requests a day, with resilient architecture that has sustained 99.99% availability. Performance is a first-class concern — latency reductions of ~45% through profiling, caching, and disciplined data-path engineering.",
+    "I modernize monoliths into fault-tolerant, async ecosystems and lead execution with production-first rigor: API contracts, observability, CI/CD, and mentoring that raises the bar for the whole team. Comfortable owning the stack end-to-end — React/Angular, Node.js/NestJS/Java, PostgreSQL, Kafka, gRPC, and cloud delivery.",
+  ],
+  aboutFocus:
+    "Currently scaling distributed systems with resilient messaging, clean API boundaries, and strong production observability.",
+  aboutHighlights: [
+    { value: "12+", label: "Years building systems" },
+    { value: "1M+", label: "Requests / day designed for" },
+    { value: "99.99%", label: "Availability target hit" },
+    { value: "45%", label: "Latency reduced" },
+  ],
+  languages: ["English", "Hindi", "Punjabi"],
+  availability: "Available with 25–30 days notice",
   aboutExtra:
-    "Available in 30 days. Currently focused on scaling distributed, cloud-native systems with resilient messaging, clean API boundaries, and strong observability in production.",
+    "Available with 25–30 days notice. Currently focused on scaling distributed, cloud-native systems with resilient messaging, clean API boundaries, and strong observability in production.",
   email: "sachinjariyal9@gmail.com",
   resumeUrl:
     "https://drive.google.com/file/d/1uClNYtXqSLY3AEeLYZfe_ENkg26ret06/view?usp=drive_link",
@@ -88,17 +104,21 @@ export const skillGroups = [
     title: "AI‑Assisted Development",
     description:
       "Working daily with modern AI coding tools to accelerate design, implementation, and review across full‑stack and distributed systems work.",
-    items: ["GitHub Copilot", "Cursor AI"],
+    items: ["GitHub Copilot", "Cursor AI", "Generative AI"],
   },
 ];
 
 export const experience = [
   {
-    role: "Full Stack Engineer — Apar Technologies",
+    role: "Senior Staff Engineer — Apar Technologies",
     meta: "Present · Remote",
     side: "left",
     bullets: [
-      "Scaling distributed, cloud-native systems across modern engineering stacks.",
+      "Building backend services and business workflows with Node.js, NestJS, and TypeScript across a multi-repo microservices setup.",
+      "Extending Angular frontend modules and micro-apps within a monorepo, coordinated with multi-service and multi-microapp delivery.",
+      "Implementing REST integrations and gRPC service communication under domain-driven and event-driven design with Apache Kafka.",
+      "Modeling PostgreSQL data (including JSONB) for asset management, Personal Effects, appointments, and vendor workflows.",
+      "Shipping on Azure with CI/CD and GitHub workflows; collaborating via Jira, pull requests, and GitHub Copilot.",
     ],
     source: "linkedin-github",
   },
@@ -165,14 +185,24 @@ export const experience = [
 export const education = [
   {
     role: "M.C.A — Computer Applications",
+    degree: "M.C.A",
+    field: "Computer Applications",
+    years: "2008 — 2011",
+    school: "Punjabi University",
     meta: "2008 — 2011 · Punjabi University",
     description:
       "Focused on algorithms, data structures, software engineering, and system design.",
+    index: "01",
   },
   {
     role: "B.C.A — Computer Applications",
+    degree: "B.C.A",
+    field: "Computer Applications",
+    years: "2005 — 2008",
+    school: "Himachal Pradesh University",
     meta: "2005 — 2008 · Himachal Pradesh University",
     description:
       "Studied fundamentals of programming, databases, and web development foundations.",
+    index: "02",
   },
 ];
