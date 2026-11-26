@@ -22,7 +22,8 @@ export function navOffset() {
     .getPropertyValue("--nav-h")
     .trim();
   const navH = Number.parseFloat(raw) || 48;
-  return navH + 12;
+  /* Align section top flush under sticky nav — no extra inset (avoids peek gaps). */
+  return navH;
 }
 
 function finishScroll() {

@@ -29,6 +29,7 @@ export const skillIcons = {
   Terraform: { si: "terraform", color: "#7B42BC" },
   "GitHub Copilot": { fa: "fa-brands fa-github", color: "#1d1d1f" },
   "Cursor AI": { fa: "fa-solid fa-i-cursor", color: "#0071e3" },
+  "Generative AI": { fa: "fa-solid fa-wand-magic-sparkles", color: "#0071e3" },
 };
 
 export function getSkillIcon(name) {
